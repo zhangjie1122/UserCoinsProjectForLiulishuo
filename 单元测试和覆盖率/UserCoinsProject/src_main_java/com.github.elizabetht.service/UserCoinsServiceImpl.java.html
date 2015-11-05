@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>UserCoinsServiceImpl.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">AllTest (2015-11-5 18:09:43)</a> &gt; <a href="../../index.html" class="el_group">UserCoinsProject</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.github.elizabetht.service</a> &gt; <span class="el_source">UserCoinsServiceImpl.java</span></div><h1>UserCoinsServiceImpl.java</h1><pre class="source lang-java linenums">package com.github.elizabetht.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.github.elizabetht.model.UserCoins;
+import com.github.elizabetht.repository.UserCoinsRepository;
+
+@Service(&quot;UserCoinsService&quot;)
+<span class="nc" id="L11">public class UserCoinsServiceImpl implements UserCoinsService{</span>
+	@Autowired
+	private UserCoinsRepository userCoinsRepository;
+	
+	@Transactional
+	public UserCoins save(UserCoins userCoins) {
+<span class="nc" id="L17">		return userCoinsRepository.save(userCoins);</span>
+	}
+
+	public int findByUserid(int userid) {
+<span class="nc" id="L21">		UserCoins stud = userCoinsRepository.findByUserid(userid);</span>
+		
+<span class="nc bnc" id="L23" title="All 2 branches missed.">		if(stud != null) {</span>
+<span class="nc" id="L24">			return stud.getCoins();</span>
+		}
+		
+<span class="nc" id="L27">		return -1;</span>
+	}
+	
+	public java.util.List&lt;UserCoins&gt; findAll() {
+<span class="nc" id="L31">		return userCoinsRepository.findAll();</span>
+	}
+	
+	public void UpdateUserCoins(int userid, int coins) {
+<span class="nc" id="L35">		userCoinsRepository.UpdateUserCoins(userid, coins);</span>
+<span class="nc" id="L36">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span>AllTest (2015-11-5 18:09:43)</div></body></html>
